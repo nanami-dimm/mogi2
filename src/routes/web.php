@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\GeneralController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -12,7 +12,9 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+Route::middleware('auth')->group(function(){
+    Route::get('/',[GeneralController::class,'index']);
 
-Route::get('/', function () {
-    return view('welcome');
+    Route::post('/punchin', [GeneralController::class,'punchIn']);
+    Route::post('/punchout', [GeneralController::class,'punchOut']);
 });
