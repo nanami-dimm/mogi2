@@ -12,6 +12,10 @@ use Illuminate\Support\Facades\RateLimiter;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Str;
 use Laravel\Fortify\Fortify;
+use Laravel\Fortify\Contracts\LogoutResponse;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Auth;
+use App\Models\User;
 
 class FortifyServiceProvider extends ServiceProvider
 {
@@ -36,6 +40,26 @@ class FortifyServiceProvider extends ServiceProvider
      Fortify::loginView(function () {
          return view('auth.login');
      });
+
+     $this->app->instance(LogoutResponse::class, new class implements LogoutResponse {
+        public function toResponse($request)
+        {
+            return redirect('/login');
+        }
+    });
+
+     Fortify::authenticateUsing(function ($request) {
+            $user = \App\Models\User::where('email', $request->email)->first();
+
+            if ($user && \Hash::check($request->password, $user->password)) {
+                return $user;
+            }
+
+            return null;
+        });
+
+        
+        
 
      RateLimiter::for('login', function (Request $request) {
          $email = (string) $request->email;

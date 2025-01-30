@@ -20,8 +20,10 @@
         </header>
         <div class="content">
             @yield('content')
+            <script src="./script.js" defer></script>
         </div>
     </div>
+    
 </body>
 
 </html>

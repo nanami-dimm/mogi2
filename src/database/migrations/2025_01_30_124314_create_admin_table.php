@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateAttendanceTable extends Migration
+class CreateAdminTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,14 +13,15 @@ class CreateAttendanceTable extends Migration
      */
     public function up()
     {
-        Schema::create('attendance', function (Blueprint $table) {
+        Schema::create('admin', function (Blueprint $table) {
             $table->id();
-            $table->integer('user_id')->unsigned();
-            $table->dateTime('punchIn');
-            $table->dateTime('punchOut')->nullable();
+            $table->string('admin_name');
+            $table->string('admin_email')->unique();
+            $table->timestamp('email_verified_at')->nullable();
+            $table->string('admin_password');
+            
+            $table->rememberToken();
             $table->timestamps();
-
-            $table->foreign('user_id')->constrained()->cascadeOnDelete();
         });
     }
 
@@ -31,6 +32,6 @@ class CreateAttendanceTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('attendance');
+        Schema::dropIfExists('admin');
     }
 }

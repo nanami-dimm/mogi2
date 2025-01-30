@@ -1,0 +1,147 @@
+.toppage-header-nav {
+    display: flex;
+    font-family: Inter;
+    font-size: 24px;
+    font-weight: 700;
+    line-height: 29.05px;
+
+    text-underline-position: from-font;
+    text-decoration-skip-ink: none;
+    color: #ffffff;
+}
+
+
+button.attendance_list__list {
+    font-family: Inter;
+    font-size: 24px;
+    font-weight: 700;
+    line-height: 29.05px;
+    text-align: center;
+    text-underline-position: from-font;
+    text-decoration-skip-ink: none;
+    background: black;
+    color: #ffffff;
+}
+
+button.attendance__link {
+    font-family: Inter;
+    font-size: 24px;
+    font-weight: 700;
+    line-height: 29.05px;
+    text-align: center;
+    text-underline-position: from-font;
+    text-decoration-skip-ink: none;
+    background: black;
+    color: #ffffff;
+}
+
+button.request__link {
+    font-family: Inter;
+    font-size: 24px;
+    font-weight: 700;
+    line-height: 29.05px;
+    text-align: center;
+    text-underline-position: from-font;
+    text-decoration-skip-ink: none;
+    background: black;
+    color: #ffffff;
+}
+
+button.logout-button {
+    font-family: Inter;
+    font-size: 24px;
+    font-weight: 700;
+    line-height: 29.05px;
+    text-align: center;
+    text-underline-position: from-font;
+    text-decoration-skip-ink: none;
+    background: black;
+    color: #ffffff;
+}
+
+body{
+    background:#e1e1e1;
+}
+.attendance-list-title{
+    font-family: Inter;
+        font-size: 30px;
+        font-weight: 700;
+        line-height: 36.31px;
+        text-align: left;
+        text-underline-position: from-font;
+        text-decoration-skip-ink: none;
+        color:#000000;
+}
+
+.attendance-detail-inner {
+    width: 900px;
+        height: 449px;
+        
+        border-radius: 10px 0px 0px 0px;
+        
+        background: #FFFFFF;;
+        border: 1px solid #E1E1E1;
+}
+
+.detail_label{
+    font-family: Inter;
+        font-size: 16px;
+        font-weight: 700;
+        line-height: 19.36px;
+        letter-spacing: 0.15em;
+        text-align: left;
+        text-underline-position: from-font;
+        text-decoration-skip-ink: none;
+        color:#737373;
+        display:flex;
+}
+
+.detail_name{
+    font-family: Inter;
+        font-size: 16px;
+        font-weight: 700;
+        line-height: 19.36px;
+        letter-spacing: 0.15em;
+        text-align: left;
+        text-underline-position: from-font;
+        text-decoration-skip-ink: none;
+        color:#000000;
+}
+
+.detail_input{
+    border: 1px solid #E1E1E1;
+    font-family: Inter;
+        font-size: 16px;
+        font-weight: 700;
+        line-height: 19.36px;
+        letter-spacing: 0.15em;
+        text-align: left;
+        text-underline-position: from-font;
+        text-decoration-skip-ink: none;
+        color:#000000;
+}
+
+.detail_note {
+    width: 316px;
+        height: 72px;
+        top: 672px;
+        left: 639px;
+        gap: 0px;
+        border-radius: 4px 0px 0px 0px;
+        border: 1px 0px 0px 0px;
+        opacity: 0px;
+        border: 1px solid #D9D9D9;
+}
+
+.fix-button {
+    font-family: Inter;
+        font-size: 22px;
+        font-weight: 700;
+        line-height: 26.63px;
+        letter-spacing: 0.15em;
+        text-align: left;
+        text-underline-position: from-font;
+        text-decoration-skip-ink: none;
+        color:#FFFFFF;
+        background:#000000;
+}

@@ -1,0 +1,106 @@
+.admin-login-form {
+    text-align: center;
+
+}
+
+label {
+    display: inline-block;
+
+}
+
+.admin-login-form__heading {
+    font-family: Inter;
+    font-size: 36px;
+
+    text-align: center;
+    text-underline-position: from-font;
+    text-decoration-skip-ink: none;
+    color: #000000;
+}
+
+
+.admin-login-form__label {
+    width: 680px;
+    font-family: Inter;
+    font-size: 24px;
+    font-weight: 700;
+    line-height: 29.05px;
+    text-align: left;
+    text-underline-position: from-font;
+    text-decoration-skip-ink: none;
+    color: #000000;
+    display: block;
+    margin-inline: auto;
+
+}
+
+.admin-login-form__input {
+    border: 1px solid #5F5F5F;
+    width: 680px;
+    height: 57.09px;
+    top: 132.55px;
+    gap: 0px;
+    border-radius: 4px 0px 0px 0px;
+    border: 1px 0px 0px 0px;
+    opacity: 0px;
+    display: block;
+    margin-inline: auto;
+}
+
+.admin-login-form__btn {
+    width: 680px;
+    height: 65.25px;
+    top: 597px;
+    left: 417px;
+    gap: 0px;
+    border-radius: 5px 0px 0px 0px;
+    opacity: 0px;
+    background: #000000;
+    font-family: Inter;
+    font-size: 26px;
+
+    text-align: center;
+    text-underline-position: from-font;
+    text-decoration-skip-ink: none;
+    color: #FFFFFF;
+
+}
+
+
+
+.admin-login-form__error-message {
+    color: #FF9494;
+}
+
+@media (max-width: 1024px) {
+    .login-form {
+        width: 80%;
+        max-width: 500px;
+        padding: 25px;
+    }
+
+    .login-form__heading {
+        font-size: 1.3rem;
+
+    }
+
+    .login-form__label {
+        font-size: 0.95rem;
+
+    }
+
+    .login-form__input {
+        padding: 12px;
+
+    }
+
+    .login-form__btn {
+        padding: 14px;
+
+    }
+
+    .register__link {
+        font-size: 0.95rem;
+
+    }
+}
