@@ -16,13 +16,7 @@ use App\Http\Controllers\AdminController;
 Route::middleware('auth')->group(function(){
     Route::get('/attendance',[GeneralController::class,'index']);
 
-    Route::post('/punchin', [GeneralController::class,'punchIn']);
-
-    Route::post('/punchout', [GeneralController::class,'punchOut']);
-
-    Route::post('/restin',[GeneralController::class,'restIn']);
-
-    Route::post('/restout',[GeneralController::class,'restOut']);
+    
 
     Route::get('/attendance/list',[GeneralController::class,'list']);
 
@@ -30,6 +24,9 @@ Route::middleware('auth')->group(function(){
 
     Route::get('/stamp_correction_request/list',[GeneralController::class,'request']);
 
+    Route::post('/attendance',[GeneralController::class,'postrequest']);
+
+    Route::post('/save-time',[GeneralController::class,'saveTime']);
     
 });
 

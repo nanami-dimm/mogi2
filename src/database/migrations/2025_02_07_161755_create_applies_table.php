@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateAttendancesTable extends Migration
+class CreateAppliesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,14 +13,17 @@ class CreateAttendancesTable extends Migration
      */
     public function up()
     {
-        Schema::create('attendances', function (Blueprint $table) {
+        Schema::create('applies', function (Blueprint $table) {
             $table->id();
+            $table->string('status')->default('apply');
             $table->foreignId('user_id')->constrained()->cascadeOnDelete();
-            $table->time('punchIn')->nullable();
+            $table->date('date');
+            $table->time('punchIn');
             $table->time('punchOut')->nullable();
-            $table->string('workDuration')->default(0)->nullable();
+            $table->datetime('reststart')->nullable();
+            $table->datetime('restend')->nullable();
+            $table->string('note');
             $table->timestamps();
-            
         });
     }
 
@@ -31,6 +34,6 @@ class CreateAttendancesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('attendances');
+        Schema::dropIfExists('applies');
     }
 }

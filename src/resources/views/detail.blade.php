@@ -33,24 +33,27 @@
             <div class="attendance-detail-inner">
             
                         <label class="detail_label" >名前</label>
-                        @foreach($users as $user)
-                        <label class="detail_name">{{ $user-> name }}</label>
-                        @endforeach
+                        
+                        <label class="detail_name">{{ $users-> name }}</label>
+                        
 
                        <form action="/attendance" method="post">
                         @csrf 
                             <label class="detail_label" for="date">日付</label>
-                            <input class="detail_input" id="date" name="date" type="text" value="{{ $attendances->date_column }}">
+                            <input class="detail_input" id="date" name="date" type="text" value="{{ $attendances->created_at->format('Y-m-d') }}">
                         
                             <label class="detail_label" for="start-work">出勤・退勤</label>
-                            <input class="detail_input" id="start-work" name="start-work" type="text" value="{{ $attendances->punchIn }}">
+                            <input class="detail_input" id="start-work" name="punchIn" type="text" value="{{ $attendances->punchIn }}">
                             <label>~</label>
-                            <input class="detail_input" id="end-work" name="end-work" type="text" value="{{ $attendances->punchOut }}">
+                            <input class="detail_input" id="end-work" name="punchOut" type="text" value="{{ $attendances->punchOut }}">
 
+                            
                             <label class="detail_label" for="rest-time">休憩</label>
-                            <input class="detail_input" id="rest-start" name="rest-start" type="text" value="{{ $attendances->breakStart }}">
+                            
+                            <input class="detail_input" id="rest-start" name="reststart" type="text" value="{{ $breaktimes->breakStart }}">
                             <label>~</label>
-                            <input class="detail_input" id="rest-end" name="rest-end" type="text" value="{{ $attendances->breakEnd }}">
+                            <input class="detail_input" id="rest-end" name="restend" type="text" value="{{ $breaktimes->breakEnd }}">
+                            
 
                             <label class="detail_label" for="note">備考</label>
                             <textarea class="detail_note" id="note" name="note" cols="30" rows="10">

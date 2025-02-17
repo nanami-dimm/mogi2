@@ -24,6 +24,7 @@
     @endif
         
     
+    </div>
 </div>
 @endsection
 
@@ -63,34 +64,22 @@ document.getElementById("date-display").innerText = dateString;
         <div id="current-date">{{ $now_format }}({{$day}})</div>
         <div id="current-time">{{ $now_time }}</div>
         
-
     
+    <div id="attendance">
+        <button id="work-form__btn"  onclick="recordTime('punchIn')">出勤</button>
 
-    <form class="work-form" method="post" action="/punchin">
-    @csrf
-    <input id="work-form__btn" type="submit" value="出勤">
-    </form>
+        <button id="rest-in__btn" onclick="recordTime('breakStart')" style="display: none;">休憩入</button>
 
-    <div class="finish-work">
-        <form class="finish-work-form" method="post" action="/punchout">
-            @csrf
-            <input id="finish-work__btn" type="submit" value="退勤">
-        </form>
+        <button id="rest-out__btn" onclick="recordTime('breakEnd')" style="display: none;">休憩戻</button>
+        
+        <button id="finish-work__btn" onclick="recordTime('punchOut')" style="display: none;">退勤</button>
+        
+        
     </div>
+    <div id="message" style="display: none;">お疲れ様でした。</div>
+        
+    
+</div>
+<script src="{{ asset('js/script.js') }}"></script>
 
-    <div class="rest-in">
-        <form class="rest-in-form" method="post" action="/restin">
-            @csrf
-            <input id="rest-in__btn" type="submit" value="休憩入">
-        </form>
-    </div>
-    <div class="rest-out">
-        <form class="rest-out-form" method="post" action="/restout">
-            @csrf
-            <input id="rest-out__btn" type="submit" value="休憩戻">
-        </form>
-    </div>
-    <div class="after-finish-work">
-        <label id="after-finish-work-word">お疲れ様でした。</label>
-    </div>
-@endsection('content')
+@endsection

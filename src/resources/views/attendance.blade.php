@@ -49,17 +49,43 @@
                         <th>合計</th>
                         <th class="detail">詳細</th>
                     </tr>
-                   @foreach($attendances as $attendance)
-                    <tr>
-                        <td>{{ $attendance->date_column }}</td>
-                        <td>{{ $attendance->punchIn }}</td>
-                        <td>{{ $attendance->punchOut }}
+                   
+                    @foreach($daysInMonth as $day)
+                        <tr>
+                            <td>{{ $day }}</td>
+                            @if(isset($attendancesByDate[$day]))
+                            <td>{{ $attendancesByDate[$day]->punchIn }}</td>
+                            <td>{{ $attendancesByDate[$day]->punchOut }}</td>
+                            
+                            
+                        @else
+                            <td>-</td> 
+                            <td>-</td>
+                        @endif
+
+                        
+                        <td>
+                                @if(isset($breaktimesByDate[$day]))
+                                    {{ gmdate("H:i:s", $breaktimesByDate[$day] * 60) }}
+                                @else
+                                    -
+                                @endif
                         </td>
-                        <td>{{ $attendance->breakDuration }}</td>
-                        <td>{{ $attendance->workDuration }}</td>
-                        <td><a href="/attendance/{{ $attendance->id }}" class="detail">詳細</a></td>
+                        
+                        <td>
+                            @if(isset($attendancesByDate[$day]))
+                                {{ gmdate("H:i:s",$attendancesByDate[$day]->workDuration *60) }} 
+                            @else
+                                —
+                            @endif
+                        </td>
+                        
+                        <td><a href="/attendance/{{ $attendancesByDate[$day]->id ?? '#' }}" class="detail">詳細</a></td> 
                     </tr>
-                    @endforeach
+                        
+                        @endforeach
+                    
+                    
             </div>
         
     

@@ -4,7 +4,10 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
+use App\Models\User;
+use App\Models\Attendance;
 use Carbon\Carbon;
+
 
 class AttendancesTableSeeder extends Seeder
 {
@@ -18,15 +21,16 @@ class AttendancesTableSeeder extends Seeder
         DB::table('attendances')->insert([
             [   
                 'user_id'=>1,
-                'date_column'=>'2024-12-01',
+                
                 'punchIn'=>'09:00:00',
                 'punchOut'=>'18:00:00',
-                'breakStart'=>'12:00:00',
-                'breakEnd'=>'13:00:00',
-                'breakDuration' => 60,
                 'workDuration' => 480,
-                
+                'created_at' => '2025-01-01',
+                'updated_at' => '2025-01-01',
             ],
         ]);
+
+        
+
     }
 }

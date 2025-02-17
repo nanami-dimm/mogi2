@@ -4,16 +4,23 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Carbon\Carbon;
 
 class Attendance extends Model
 {
     use HasFactory;
-    protected $fillable = ['user_id','date_column','punchIn','punchOut','breakStart','breakEnd','breakDuration','workDuration'];
+    protected $fillable = ['user_id','punchIn','punchOut','workDuration','created_at','updated_at','note'];
 
     public function user()
     {
         $this->belongsTo(User::class);
     }
+
+    public function breaktimes(){
+        return $this->belongsToMany(Breaktime::class,'attendance_breaktime','attendance_id','breaktime_id');
+    }
+
+    
 
     protected static function boot()
     {
