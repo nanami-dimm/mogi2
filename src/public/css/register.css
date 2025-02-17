@@ -1,0 +1,121 @@
+.register-form__group {
+
+    text-align: center;
+
+}
+
+.register-form__inner {
+    text-align: center;
+}
+
+label {
+    display: inline-block;
+    text-align: center;
+
+}
+
+.register-form__heading {
+    font-family: Inter;
+    font-size: 36px;
+    font-weight: 700;
+    line-height: 43.57px;
+    text-align: center;
+    text-underline-position: from-font;
+    text-decoration-skip-ink: none;
+    color: #000000;
+}
+
+.register-form__label {
+    width: 680px;
+    height: 35px;
+    top: 102px;
+    gap: 0px;
+    opacity: 0px;
+    font-family: Inter;
+    font-size: 24px;
+    font-weight: 700;
+    line-height: 29.05px;
+    text-align: left;
+    text-underline-position: from-font;
+    text-decoration-skip-ink: none;
+
+    display: block;
+    margin-inline: auto;
+}
+
+.register-form__input {
+    width: 680px;
+    height: 59px;
+    top: 137px;
+    gap: 0px;
+    border-radius: 4px 0px 0px 0px;
+    border: 1px 0px 0px 0px;
+    opacity: 0px;
+    border: 1px solid #5F5F5F;
+    display: block;
+    margin-inline: auto;
+}
+
+.register-form__btn {
+    width: 680px;
+    height: 65.25px;
+    top: 888px;
+
+    gap: 0px;
+    border-radius: 5px 0px 0px 0px;
+
+    background: #000000;
+    font-family: Inter;
+    font-size: 26px;
+    text-align: center;
+    text-underline-position: from-font;
+    text-decoration-skip-ink: none;
+    color: #FFFFFF;
+}
+
+.login__link {
+    font-family: Inter;
+    font-size: 20px;
+    
+    text-align: center;
+    text-underline-position: from-font;
+    text-decoration-skip-ink: none;
+    color: #0073CC;
+    padding:20px;
+}
+
+.register-form__error-message {
+    color: #FF9494;
+}
+
+@media (max-width: 1024px) {
+    .register-form {
+        width: 80%;
+        max-width: 500px;
+        padding: 25px;
+    }
+
+    .register-form__heading {
+        font-size: 1.3rem;
+    }
+
+    .register-form__label {
+        font-size: 0.95rem;
+
+    }
+
+    .register-form__input {
+        padding: 12px;
+
+    }
+
+    .register-form__btn {
+        padding: 14px;
+
+    }
+
+    .login__link {
+        font-size: 0.95rem;
+
+    }
+}
