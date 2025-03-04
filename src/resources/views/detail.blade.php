@@ -46,19 +46,29 @@
                             <input class="detail_input" id="start-work" name="punchIn" type="text" value="{{ $attendances->punchIn }}">
                             <label>~</label>
                             <input class="detail_input" id="end-work" name="punchOut" type="text" value="{{ $attendances->punchOut }}">
-
+                            @error('punchOut')
+                            {{ $message }}
+                            @enderror
                             
                             <label class="detail_label" for="rest-time">休憩</label>
                             
+                            
                             <input class="detail_input" id="rest-start" name="reststart" type="text" value="{{ $breaktimes->breakStart }}">
+                            @error('reststart')
+                            {{ $message }}
+                            @enderror
                             <label>~</label>
                             <input class="detail_input" id="rest-end" name="restend" type="text" value="{{ $breaktimes->breakEnd }}">
-                            
-
+                            @error('restend')
+                            {{ $message }}
+                            @enderror
+                           
                             <label class="detail_label" for="note">備考</label>
                             <textarea class="detail_note" id="note" name="note" cols="30" rows="10">
                             </textarea>
-
+                            @error('note')
+                            {{ $message }}
+                            @enderror
                             <button class="fix-button">修正 </button>
         
                         </form>

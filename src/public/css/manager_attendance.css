@@ -1,4 +1,12 @@
-.toppage-header-nav {
+body {
+    background: #e1e1e1;
+    
+    
+}
+
+.toppage-header-nav {   
+    position: relative;
+    
     display: flex;
     font-family: Inter;
     font-size: 24px;
@@ -59,89 +67,57 @@ button.logout-button {
     color: #ffffff;
 }
 
-body{
-    background:#e1e1e1;
-}
-.attendance-list-title{
+.manager-attendance-list-title{
     font-family: Inter;
+        font-weight: 700;
         font-size: 30px;
-        font-weight: 700;
         line-height: 36.31px;
-        text-align: left;
-        text-underline-position: from-font;
-        text-decoration-skip-ink: none;
-        color:#000000;
+        letter-spacing: 0%;
 }
 
-.attendance-detail-inner {
-    width: 900px;
-        height: 449px;
-        
-        border-radius: 10px 0px 0px 0px;
-        
-        background: #FFFFFF;
-        border: 1px solid #E1E1E1;
+.mb-3 {
+    display:flex;
 }
 
-.detail_label{
+.day {
     font-family: Inter;
-        font-size: 16px;
         font-weight: 700;
+        font-size: 16px;
         line-height: 19.36px;
-        letter-spacing: 0.15em;
-        text-align: left;
-        text-underline-position: from-font;
-        text-decoration-skip-ink: none;
+        letter-spacing: 15%;
         color:#737373;
-        display:flex;
 }
 
-.detail_name{
-    font-family: Inter;
-        font-size: 16px;
-        font-weight: 700;
-        line-height: 19.36px;
-        letter-spacing: 0.15em;
-        text-align: left;
-        text-underline-position: from-font;
-        text-decoration-skip-ink: none;
-        color:#000000;
-}
-
-.detail_input{
-    border: 1px solid #E1E1E1;
-    font-family: Inter;
-        font-size: 16px;
-        font-weight: 700;
-        line-height: 19.36px;
-        letter-spacing: 0.15em;
-        text-align: left;
-        text-underline-position: from-font;
-        text-decoration-skip-ink: none;
-        color:#000000;
-}
-
-.detail_note {
-    width: 316px;
-        height: 72px;
-        top: 672px;
-        left: 639px;
+.attendance th,.attendance td {
+    width: 900px;
+        height: 0px;
+        top: 453px;
+        left: 306px;
         gap: 0px;
-        border-radius: 4px 0px 0px 0px;
-        border: 1px 0px 0px 0px;
+        border: 2px 0px 0px 0px;
         opacity: 0px;
-        border: 1px solid #D9D9D9;
+        border-bottom: 2px solid #E1E1E1;
+        background: #FFFFFF;
+}
+.attendance {
+    width: 900px;
+        height: 33px;
+        top: 420px;
+        left: 306px;
+        gap: 0px;
+        opacity: 0px;
+        border: 2px solid #E1E1E1;
 }
 
-.fix-button {
+.attendance th {
     font-family: Inter;
-        font-size: 22px;
+        font-size: 16px;
         font-weight: 700;
-        line-height: 26.63px;
+        line-height: 19.36px;
         letter-spacing: 0.15em;
         text-align: left;
         text-underline-position: from-font;
         text-decoration-skip-ink: none;
-        color:#FFFFFF;
-        background:#000000;
+        color: #737373;
+        border-bottom: 2px solid #E1E1E1;
 }

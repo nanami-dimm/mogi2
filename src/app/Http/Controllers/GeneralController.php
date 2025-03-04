@@ -9,7 +9,9 @@ use Carbon\Carbon;
 use App\Models\User;
 use App\Models\Breaktime;
 use App\Models\Apply;
+use App\Http\Requests\ApplyRequest;
 use Illuminate\Support\Facades\Auth; 
+use App\Models\Agree;
 
 
 class GeneralController extends Controller
@@ -93,6 +95,7 @@ class GeneralController extends Controller
        
        $breaktimes = Breaktime::find($attendances_id);
         
+       
 
         //dd($breaktimes);
 
@@ -102,24 +105,27 @@ class GeneralController extends Controller
         return view('detail',compact('attendances','users','breaktimes'));
     }
 
-    public function request(Request $request)
+    public function apply(Request $request)
     {   
         // クエリパラメータから status を取得
         $status = $request->input('status', 'apply');
 
+        if ($status === 'apply') {
         $requests = Apply::where('status', $status)->get();
-
-        // 申請データの取得クエリ
-        $query = Apply::query();
-
-        if ($status) {
-        $query->where('status', $status); // ステータスでフィルタリング
+        } elseif ($status === 'agree') {
+        $requests = Agree::all(); // Agreesテーブルのデータを取得
+        } else {
+        $requests = collect(); // 空のコレクションを作成
         }
 
+    
+        $query = Apply::query();
         $applies = $query->get();
+        $apply = $query->first();
         $users = User::find(Auth::id());
+        
 
-        return view('request',compact('applies','users','requests'));
+        return view('request',compact('applies','users','requests','users','status'));
     }
 
     public function saveTime(Request $request)
@@ -130,12 +136,13 @@ class GeneralController extends Controller
 
     // 出勤の場合
     if ($type === 'punchIn') {
-        // 新しい Attendance インスタンスを作成
+        
+
         $attendance = new Attendance();
         $attendance->user_id = $user->id;
         $attendance->punchIn = $time->toTimeString();
         $attendance->save(); // 出勤時間を保存
-
+        \Log::info("New Attendance Created: ", $attendance->toArray()); 
     // 休憩開始の場合
     } elseif ($type === 'breakStart') {
         // 最新の Attendance を取得
@@ -180,9 +187,20 @@ class GeneralController extends Controller
             ->latest()
             ->first();
 
-        // 退勤時間を保存
-        $attendance->punchOut = $time->toTimeString();
-        $attendance->save();
+        
+            // 退勤時間を保存
+            $attendance->punchOut = $time->toTimeString();
+            $attendance->save();
+
+            // 未終了の休憩があれば、終了時間を設定
+            $latestBreak = $attendance->breakTimes()
+                ->whereNull('breakEnd')
+                ->orderBy('breaktimes.id', 'desc')
+                ->first();
+
+            
+            
+        
     }
 
     return response()->json([
@@ -194,7 +212,7 @@ class GeneralController extends Controller
 
     
 
-    public function postrequest(Request $request)
+    public function postrequest(ApplyRequest $request)
     {   
         $form = $request->all();
         $form['user_id'] = Auth::id();

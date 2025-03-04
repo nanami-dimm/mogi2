@@ -6,6 +6,7 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>模擬案件2</title>
     <link rel="stylesheet" href="{{asset('css/common.css')}}">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     @yield('css')
 </head>
 
@@ -25,7 +26,7 @@
         </div>
     </div>
     <script src="{{ asset('js/script.js') }}" defer></script>
-
+    
 </body>
 
 </html>
