@@ -11,7 +11,7 @@
         <button class="attendance__link" onclick="location.href='/attendance'">勤怠</button>
         <button class="attendance_list__list" onclick="location.href='/attendance/list'">勤怠一覧</button>
         
-        <button class="request__link" onclick="location.href='/stamp_correction_request/list'">申請</button>
+        <button class="request__link" onclick="location.href='/attendance/stamp_correction_request/list'" type="button">申請</button>
     @if (Auth::check())
     
         <form action="/logout" method="post" class="logout-form">

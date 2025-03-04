@@ -16,6 +16,7 @@ class CreateAgreesTable extends Migration
         Schema::create('agrees', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->constrained()->cascadeOnDelete();
+            $table->string('status');
             $table->date('date');
             $table->time('punchIn');
             $table->time('punchOut')->nullable();

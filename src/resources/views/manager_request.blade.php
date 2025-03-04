@@ -1,34 +1,33 @@
 @extends('layouts.app')
 
 @section('css')
-<link rel="stylesheet" href="{{ asset('css/request.css')}}">
+<link rel="stylesheet" href="{{ asset('css/manager_request.css')}}">
+
 @endsection
 
 @section('link')
 <div class="toppage-header">
     
     <div class="toppage-header-nav">
-        <button class="attendance__link" onclick="location.href='/attendance'">勤怠</button>
-        <button class="attendance_list__list" onclick="location.href='/attendance/list'">勤怠一覧</button>
+        <button class="attendance__link" onclick="location.href='/admin/attendance/list'">勤怠一覧</button>
+
+        <button class="attendance_list__list" onclick="location.href='/admin/staff/list'">スタッフ一覧</button>
         
-        <button class="request__link" onclick="location.href='/attendance/stamp_correction_request/list'" type="button">申請</button>
-    @if (Auth::check())
+        <button class="request__link" onclick="location.href='/stamp_correction_request/list'">申請一覧</button>
+
+        @if (Auth::check())
     
         <form action="/logout" method="post" class="logout-form">
         @csrf
             <button class="logout-button">ログアウト</button>
         </form>
-      
-        
-    @endif
-</div>
-    
-</div>
-@endsection
+        @endif
+    </div>
+    @endsection
 
-@section('content')
-<div class="request-list">
-    <div class="request-list-title">
+    @section('content')
+    <div class="manager-request">
+        <div class="request-list-title">
         <h2 class="request-list-heading">申請一覧</h2>
     </div>
     <div class="confirm">
@@ -52,17 +51,18 @@
                 <tr>
                     
                     <td>{{ $request->status == 'apply' ? '承認待ち' : '承認済み' }}</td>
-                   
+                    
                     
                     <td>{{ $users->name }}</td>
                     <td>{{ $request->date }}</td>
                     <td>{{ $request->note }}</td>
                     <td>{{ $request->created_at->format('Y-m-d') }}</td>
                     <td><a href="/admin/attendance/{{ $request->id }}">詳細</a></td>
+                    
                 @endforeach
                 </tr>
             </table>
         </div>
     </div>
 </div>
-@endsection
+    @endsection

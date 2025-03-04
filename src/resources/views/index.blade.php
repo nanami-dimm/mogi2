@@ -12,7 +12,7 @@
         <button class="attendance__link" onclick="location.href='/attendance'">勤怠</button>
         <button class="attendance_list__list" onclick="location.href='/attendance/list'">勤怠一覧</button>
         
-        <button class="request__link" onclick="location.href='/stamp_correction_request/list'">申請</button>
+        <button class="request__link" onclick="location.href='/attendance/stamp_correction_request/list'" type="button">申請</button>
     @if (Auth::check())
     
         <form action="/logout" method="post" class="logout-form">
@@ -66,13 +66,13 @@ document.getElementById("date-display").innerText = dateString;
         
     
     <div id="attendance">
-        <button id="work-form__btn"  onclick="recordTime('punchIn')">出勤</button>
+        <button id="work-form__btn"  onclick="saveTime('punchIn')">出勤</button>
 
-        <button id="rest-in__btn" onclick="recordTime('breakStart')" style="display: none;">休憩入</button>
+        <button id="rest-in__btn" onclick="saveTime('breakStart')" style="display: none;">休憩入</button>
 
-        <button id="rest-out__btn" onclick="recordTime('breakEnd')" style="display: none;">休憩戻</button>
+        <button id="rest-out__btn" onclick="saveTime('breakEnd')" style="display: none;">休憩戻</button>
         
-        <button id="finish-work__btn" onclick="recordTime('punchOut')" style="display: none;">退勤</button>
+        <button id="finish-work__btn" onclick="saveTime('punchOut')" style="display: none;">退勤</button>
         
         
     </div>

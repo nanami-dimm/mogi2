@@ -1,4 +1,4 @@
-function recordTime(type) {
+function saveTime(type) {
             let currentTime = new Date().toLocaleTimeString('ja-JP', { hour12: false });
 
             fetch("/save-time", {
@@ -61,3 +61,6 @@ document.getElementById("rest-out__btn").addEventListener("click", function () {
 document.getElementById("finish-work__btn").addEventListener("click", function () {
     recordTime("punchOut");
 });
+
+
+

@@ -1,0 +1,177 @@
+body {
+    background: #e1e1e1;
+}
+
+.toppage-header-nav {
+    display: flex;
+    font-family: Inter;
+    font-size: 24px;
+    font-weight: 700;
+    line-height: 29.05px;
+
+    text-underline-position: from-font;
+    text-decoration-skip-ink: none;
+    color: #ffffff;
+}
+
+
+button.attendance_list__list {
+    font-family: Inter;
+    font-size: 24px;
+    font-weight: 700;
+    line-height: 29.05px;
+    text-align: center;
+    text-underline-position: from-font;
+    text-decoration-skip-ink: none;
+    background: black;
+    color: #ffffff;
+}
+
+button.attendance__link {
+    font-family: Inter;
+    font-size: 24px;
+    font-weight: 700;
+    line-height: 29.05px;
+    text-align: center;
+    text-underline-position: from-font;
+    text-decoration-skip-ink: none;
+    background: black;
+    color: #ffffff;
+}
+
+button.request__link {
+    font-family: Inter;
+    font-size: 24px;
+    font-weight: 700;
+    line-height: 29.05px;
+    text-align: center;
+    text-underline-position: from-font;
+    text-decoration-skip-ink: none;
+    background: black;
+    color: #ffffff;
+}
+
+button.logout-button {
+    font-family: Inter;
+    font-size: 24px;
+    font-weight: 700;
+    line-height: 29.05px;
+    text-align: center;
+    text-underline-position: from-font;
+    text-decoration-skip-ink: none;
+    background: black;
+    color: #ffffff;
+}
+
+.staff-name {
+    font-family: Inter;
+    font-size: 30px;
+    font-weight: 700;
+    line-height: 36.31px;
+    text-align: left;
+    text-underline-position: from-font;
+    text-decoration-skip-ink: none;
+    color: #000000;
+}
+
+.attendance-time {
+    background: #ffffff;
+}
+
+.year-month {
+    display: flex;
+    padding:30px;
+    display:flex;
+}
+
+.month {
+    font-family: Inter;
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 19.36px;
+    letter-spacing: 0.15em;
+
+    text-underline-position: from-font;
+    text-decoration-skip-ink: none;
+    color: #737373;
+    ;
+}
+
+.year {
+    font-family: Inter;
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 24.2px;
+
+    text-underline-position: from-font;
+    text-decoration-skip-ink: none;
+    color: #000000;
+}
+
+.time-detail {
+    
+    height: 33px;
+    top: 420px;
+    left: 306px;
+    gap: 0px;
+    opacity: 0px;
+    border: 2px solid #E1E1E1;
+}
+
+.time-detail th {
+    font-family: Inter;
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 19.36px;
+    letter-spacing: 0.15em;
+    text-align: left;
+    text-underline-position: from-font;
+    text-decoration-skip-ink: none;
+    color: #737373;
+}
+
+.detail {
+    font-family: Inter;
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 19.36px;
+    letter-spacing: 0.15em;
+    text-align: left;
+    text-underline-position: from-font;
+    text-decoration-skip-ink: none;
+    color: #000000;
+    
+
+}
+
+.time-detail th,
+.time-detail td {
+    width: 900px;
+    height: 0px;
+    top: 453px;
+    left: 306px;
+    gap: 0px;
+    border: 2px 0px 0px 0px;
+    opacity: 0px;
+    border-bottom: 2px solid #E1E1E1;
+    text-align:center;
+}
+
+.select-year-month {
+    display: flex;
+    padding: 30px;
+    text-align: center;
+}
+
+button.csv {
+    font-family: Inter;
+    font-weight: 700;
+    font-size: 22px;
+    line-height: 26.63px;
+    letter-spacing: 15%;
+    width: 105;
+    height: 27;
+    top: 1937px;
+    left: 1061px;
+    color:#FFFFFF;
+}
