@@ -2,16 +2,18 @@ body {
     background: #e1e1e1;
 }
 
-.toppage-header-nav {
+.toppage-header {
+    position: absolute;
+    top: 15px;
+    right: 10px;
     display: flex;
-    font-family: Inter;
-    font-size: 24px;
-    font-weight: 700;
-    line-height: 29.05px;
+    align-items: center;
+    gap: 10px;
 
+    padding: 10px;
     text-underline-position: from-font;
     text-decoration-skip-ink: none;
-    color: #ffffff;
+
 }
 
 
@@ -98,4 +100,20 @@ button.logout-button {
 
 .staff-list-inner {
     background:#ffffff;
+}
+
+@media (min-width: 768px) and (max-width: 1024px) {
+    .staff-list-title {
+        font-size: 22px;
+    }
+
+    .staff-list-table th,
+    .staff-list-table td {
+        font-size: 16px;
+        padding: 10px;
+    }
+
+    .staff-list-table a {
+        font-size: 16px;
+    }
 }

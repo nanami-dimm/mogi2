@@ -72,35 +72,43 @@ label {
     color: #FF9494;
 }
 
-@media (max-width: 1024px) {
-    .login-form {
+@media (min-width: 768px) and (max-width: 1024px) {
+    .admin-login-form {
         width: 80%;
-        max-width: 500px;
-        padding: 25px;
+        
+        padding: 20px;
+        
+        margin: 0 auto;
+        
     }
 
-    .login-form__heading {
-        font-size: 1.3rem;
-
+    .admin-login-form__heading {
+        font-size: 22px;
+        
+        text-align: center;
+        
     }
 
-    .login-form__label {
-        font-size: 0.95rem;
-
-    }
-
-    .login-form__input {
-        padding: 12px;
-
-    }
-
-    .login-form__btn {
+    .admin-login-form__input {
+        font-size: 16px;
+        
         padding: 14px;
-
+        
+        width: 100%;
+        
+        margin-bottom: 20px;
+        
     }
 
-    .register__link {
-        font-size: 0.95rem;
-
+    .admin-login-form__btn {
+        font-size: 16px;
+       
+        padding: 16px;
+        
+        width: 100%;
+        
+        cursor: pointer;
     }
+
+    
 }

@@ -7,7 +7,7 @@
 @section('link')
 <div class="toppage-header">
     
-    <div class="toppage-header-nav">
+    
         <button class="attendance__link" onclick="location.href='/attendance'">勤怠</button>
         <button class="attendance_list__list" onclick="location.href='/attendance/list'">勤怠一覧</button>
         
@@ -88,7 +88,7 @@
                     
             </div>
         
-    
+</div>
 </div>
 @endsection
 

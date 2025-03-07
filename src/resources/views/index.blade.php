@@ -8,23 +8,19 @@
 @section('link')
 <div class="toppage-header">
     
-    <div class="toppage-header-nav">
+    
         <button class="attendance__link" onclick="location.href='/attendance'">勤怠</button>
         <button class="attendance_list__list" onclick="location.href='/attendance/list'">勤怠一覧</button>
         
         <button class="request__link" onclick="location.href='/attendance/stamp_correction_request/list'" type="button">申請</button>
+    
     @if (Auth::check())
     
         <form action="/logout" method="post" class="logout-form">
         @csrf
             <button class="logout-button">ログアウト</button>
         </form>
-      
-        
     @endif
-        
-    
-    </div>
 </div>
 @endsection
 
@@ -60,9 +56,7 @@ document.getElementById("date-display").innerText = dateString;
   </script>
 
 
-    <div class="laravel-time">
-        <div id="current-date">{{ $now_format }}({{$day}})</div>
-        <div id="current-time">{{ $now_time }}</div>
+    
         
     
     <div id="attendance">

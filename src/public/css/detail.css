@@ -1,13 +1,15 @@
-.toppage-header-nav {
+.toppage-header {
+    position: absolute;
+    top: 15px;
+    right: 10px;
     display: flex;
-    font-family: Inter;
-    font-size: 24px;
-    font-weight: 700;
-    line-height: 29.05px;
+    align-items: center;
+    gap: 10px;
 
+    padding: 10px;
     text-underline-position: from-font;
     text-decoration-skip-ink: none;
-    color: #ffffff;
+
 }
 
 
@@ -144,4 +146,24 @@ body{
         text-decoration-skip-ink: none;
         color:#FFFFFF;
         background:#000000;
+}
+
+@media (max-width: 768px) and (max-width: 1024px) {
+    .attendance-list {
+        width: 90%;
+        padding: 15px;
+    }
+
+    .detail_label {
+        font-size: 14px;
+    }
+
+    .detail_input,
+    .detail_note {
+        font-size: 14px;
+    }
+
+    .fix-button {
+        font-size: 16px;
+    }
 }

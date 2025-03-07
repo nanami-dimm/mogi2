@@ -2,16 +2,18 @@ body {
     background: #e1e1e1;
 }
 
-.toppage-header-nav {
+.toppage-header {
+    position: absolute;
+    top: 15px;
+    right: 10px;
     display: flex;
-    font-family: Inter;
-    font-size: 24px;
-    font-weight: 700;
-    line-height: 29.05px;
+    align-items: center;
+    gap: 10px;
 
+    padding: 10px;
     text-underline-position: from-font;
     text-decoration-skip-ink: none;
-    color: #ffffff;
+
 }
 
 
@@ -174,4 +176,23 @@ button.csv {
     top: 1937px;
     left: 1061px;
     color:#FFFFFF;
+}
+
+@media (min-width: 768px) and (max-width: 1024px) {
+    .staff-name {
+        font-size: 17px;
+    }
+
+    .time-detail th,
+    .time-detail td {
+        padding: 10px;
+    }
+
+    .csv-btn {
+        margin-top: 20px;
+    }
+
+    .csv {
+        padding: 9px 18px;
+    }
 }
