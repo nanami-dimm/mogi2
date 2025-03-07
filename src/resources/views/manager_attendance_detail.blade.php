@@ -8,7 +8,7 @@
 @section('link')
 <div class="toppage-header">
     
-    <div class="toppage-header-nav">
+    
         <button class="attendance__link" onclick="location.href='/admin/attendance/list'">勤怠一覧</button>
 
         <button class="attendance_list__list" onclick="location.href='/admin/staff/list'">スタッフ一覧</button>
@@ -52,13 +52,13 @@
                 <textarea class="detail_note" id="note" name="note" cols="30" rows="10"></textarea>
                
                 
-                {{-- apply の場合は修正不可 --}}
+                
                 @if (!$isApplyStatus)
                     <button type="submit" class="fix-button">修正</button>
                 @endif
             </form>
 
-            {{-- apply の場合、承認ボタンを表示 --}}
+            
             @if ($isApplyStatus)
                 <form action="{{ url('/admin/attendance/approve/' . $attendances->id) }}" method="POST">
                     @csrf

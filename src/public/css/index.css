@@ -1,14 +1,17 @@
-.toppage-header-nav {
-    display:flex;
-    font-family: Inter;
-        font-size: 24px;
-        font-weight: 700;
-        line-height: 29.05px;
-        
-        text-underline-position: from-font;
-        text-decoration-skip-ink: none;
-        color:#ffffff;
+.toppage-header {
+    position: absolute;
+    top: 15px;
+    right: 10px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    
+    padding: 10px;
+    text-underline-position: from-font;
+    text-decoration-skip-ink: none;
+    
 }
+
 
 
 button.attendance_list__list  {
@@ -128,3 +131,28 @@ body {
         text-align: center;
 }
 
+@media (max-width: 768px) and (max-width: 1024px) {
+    .toppage-header-nav {
+        flex-direction: column;
+      
+        gap: 10px;
+    }
+
+    .attendance__link,
+    .attendance_list__list,
+    .request__link,
+    .logout-button {
+        width: 100%;
+        font-size: 14px;
+    }
+
+    #attendance {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    button {
+        padding: 12px;
+    }
+}

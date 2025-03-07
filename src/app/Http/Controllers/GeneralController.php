@@ -63,13 +63,13 @@ class GeneralController extends Controller
         $start = Carbon::parse($breaktime->breakStart);
         $end = Carbon::parse($breaktime->breakEnd);
 
-        $breakDuration = $end->diffInMinutes($start); // 休憩時間を分単位で計算
+        $breakDuration = $end->diffInMinutes($start); 
 
         if (!isset($breaktimesByDate[$date])) {
-            $breaktimesByDate[$date] = 0; // 初めての休憩時間
+            $breaktimesByDate[$date] = 0;
         }
 
-        $breaktimesByDate[$date] += $breakDuration; // 同じ日に複数の休憩があれば加算
+        $breaktimesByDate[$date] += $breakDuration; 
         }
         //dd($breaktimesByDate);
 
@@ -107,15 +107,15 @@ class GeneralController extends Controller
 
     public function apply(Request $request)
     {   
-        // クエリパラメータから status を取得
+       
         $status = $request->input('status', 'apply');
 
         if ($status === 'apply') {
         $requests = Apply::where('status', $status)->get();
         } elseif ($status === 'agree') {
-        $requests = Agree::all(); // Agreesテーブルのデータを取得
+        $requests = Agree::all(); 
         } else {
-        $requests = collect(); // 空のコレクションを作成
+        $requests = collect(); 
         }
 
     
@@ -134,41 +134,41 @@ class GeneralController extends Controller
     $type = $request->input('type');
     $time = Carbon::parse($request->input('time'));
 
-    // 出勤の場合
+    
     if ($type === 'punchIn') {
         
 
         $attendance = new Attendance();
         $attendance->user_id = $user->id;
         $attendance->punchIn = $time->toTimeString();
-        $attendance->save(); // 出勤時間を保存
+        $attendance->save(); 
         \Log::info("New Attendance Created: ", $attendance->toArray()); 
-    // 休憩開始の場合
+    
     } elseif ($type === 'breakStart') {
-        // 最新の Attendance を取得
+        
         $attendance = Attendance::where('user_id', $user->id)
-            ->whereNull('punchOut') // 退勤していない出勤レコードを取得
+            ->whereNull('punchOut') 
             ->latest()
             ->first();
 
-        // 休憩データを作成
+        
         $breakTime = BreakTime::create([
             'breakStart' => $time,
             'breakEnd' => null,
         ]);
 
-        // 中間テーブルに関連付けを保存
+        
         $attendance->breakTimes()->attach($breakTime->id);
 
-    // 休憩終了の場合
+    
     } elseif ($type === 'breakEnd') {
-        // 最新の Attendance を取得
+       
         $attendance = Attendance::where('user_id', $user->id)
-            ->whereNull('punchOut') // 退勤していない出勤レコードを取得
+            ->whereNull('punchOut') 
             ->latest()
             ->first();
 
-        // 最新の休憩データを取得
+        
         $latestBreak = $attendance->breakTimes()
             ->whereNull('breakEnd')
             ->latest()
@@ -179,28 +179,21 @@ class GeneralController extends Controller
             $latestBreak->save();
         }
 
-    // 退勤の場合
+    
     } elseif ($type === 'punchOut') {
-        // 最新の Attendance を取得
+        
         $attendance = Attendance::where('user_id', $user->id)
-            ->whereNull('punchOut') // 退勤していない出勤レコードを取得
+            ->whereNull('punchOut') 
             ->latest()
             ->first();
 
-        
-            // 退勤時間を保存
-            $attendance->punchOut = $time->toTimeString();
-            $attendance->save();
+        $attendance->punchOut = $time->toTimeString();
+        $attendance->save();
+        $latestBreak = $attendance->breakTimes()
+            ->whereNull('breakEnd')
+            ->orderBy('breaktimes.id', 'desc')
+            ->first();
 
-            // 未終了の休憩があれば、終了時間を設定
-            $latestBreak = $attendance->breakTimes()
-                ->whereNull('breakEnd')
-                ->orderBy('breaktimes.id', 'desc')
-                ->first();
-
-            
-            
-        
     }
 
     return response()->json([

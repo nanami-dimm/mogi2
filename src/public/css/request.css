@@ -1,13 +1,15 @@
-.toppage-header-nav {
+.toppage-header {
+    position: absolute;
+    top: 15px;
+    right: 10px;
     display: flex;
-    font-family: Inter;
-    font-size: 24px;
-    font-weight: 700;
-    line-height: 29.05px;
+    align-items: center;
+    gap: 10px;
 
+    padding: 10px;
     text-underline-position: from-font;
     text-decoration-skip-ink: none;
-    color: #ffffff;
+
 }
 
 .request {
@@ -116,3 +118,23 @@ li {
         letter-spacing: 15%;
 }
 
+@media (min-width: 768px) and (max-width: 1024px) {
+
+    .request-detail th,
+    .request-detail td {
+        padding: 10px;
+    }
+
+    .request-detail th {
+        font-size: 16px;
+    }
+
+    .confirm_list {
+        display: flex;
+        justify-content: center;
+    }
+
+    .confirm_list li {
+        margin: 0 10px;
+    }
+}

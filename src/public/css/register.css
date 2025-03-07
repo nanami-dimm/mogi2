@@ -88,34 +88,40 @@ label {
     color: #FF9494;
 }
 
-@media (max-width: 1024px) {
+@media (min-width: 768px) and (max-width: 1024px) {
     .register-form {
-        width: 80%;
-        max-width: 500px;
-        padding: 25px;
+        width: 90%;
+        padding: 15px;
+        margin: 0 auto;
+
     }
 
     .register-form__heading {
-        font-size: 1.3rem;
-    }
-
-    .register-form__label {
-        font-size: 0.95rem;
-
+        font-size: 20px;
+        
+        text-align: center;
+        
     }
 
     .register-form__input {
+        font-size: 16px;
+        
         padding: 12px;
-
+        
+        width: 100%;
+        
+        margin-bottom: 15px;
+        
     }
 
     .register-form__btn {
+        font-size: 16px;
+        
         padding: 14px;
-
-    }
-
-    .login__link {
-        font-size: 0.95rem;
-
+        
+        width: 100%;
+        
+        cursor: pointer;
+        
     }
 }

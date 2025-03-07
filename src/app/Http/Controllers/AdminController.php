@@ -47,13 +47,9 @@ public function store(Request $request)
     {   
         $date = $request->query('date', Carbon::today()->toDateString());
 
-    // 今日の日付を取得
+    
         $today = Carbon::today()->toDateString();
-
-    // 表示する日付（クエリパラメータで指定された日付を使用）
         $displayDate = Carbon::parse($date);
-
-    // 前日・翌日を計算
         $previousDay = $displayDate->copy()->subDay()->format('Y-m-d');
         $nextDay = $displayDate->copy()->addDay()->format('Y-m-d');
         
@@ -70,13 +66,13 @@ public function store(Request $request)
         $start = Carbon::parse($breaktime->breakStart);
         $end = Carbon::parse($breaktime->breakEnd);
 
-        $breakDuration = $end->diffInMinutes($start); // 休憩時間を分単位で計算
+        $breakDuration = $end->diffInMinutes($start); 
 
         if (!isset($breaktimesByDate[$date])) {
-            $breaktimesByDate[$date] = 0; // 初めての休憩時間
+            $breaktimesByDate[$date] = 0; 
         }
 
-        $breaktimesByDate[$date] += $breakDuration; // 同じ日に複数の休憩があれば加算
+        $breaktimesByDate[$date] += $breakDuration; 
         }
         //dd($breaktimesByDate);
         return view('manager_attendance',compact('date','attendances','previousDay','nextDay','breaktimesByDate','today','displayDate'));
@@ -92,15 +88,15 @@ public function store(Request $request)
       
         public function apply(Request $request)
     {   
-        // クエリパラメータから status を取得
+        
         $status = $request->input('status', 'apply');
 
         if ($status === 'apply') {
         $requests = Apply::where('status', $status)->get();
         } elseif ($status === 'agree') {
-        $requests = Agree::all(); // Agreesテーブルのデータを取得
+        $requests = Agree::all();
         } else {
-        $requests = collect(); // 空のコレクションを作成
+        $requests = collect(); 
         }
 
     
@@ -149,13 +145,13 @@ public function store(Request $request)
         $start = Carbon::parse($breaktime->breakStart);
         $end = Carbon::parse($breaktime->breakEnd);
 
-        $breakDuration = $end->diffInMinutes($start); // 休憩時間を分単位で計算
+        $breakDuration = $end->diffInMinutes($start); 
 
         if (!isset($breaktimesByDate[$date])) {
-            $breaktimesByDate[$date] = 0; // 初めての休憩時間
+            $breaktimesByDate[$date] = 0; 
         }
 
-        $breaktimesByDate[$date] += $breakDuration; // 同じ日に複数の休憩があれば加算
+        $breaktimesByDate[$date] += $breakDuration; 
         }
         //dd($breaktimesByDate);
 
@@ -164,9 +160,9 @@ public function store(Request $request)
         $attendancesByDate = [];
 
 foreach ($daysInMonth as $day) {
-    // 各ユーザーの勤怠データを日付ごとにフィルタリング
+    
     $attendancesByDate[$day] = Attendance::whereDate('created_at', $day)
-        ->where('user_id', $user->id)  // ユーザーごとにフィルタリング
+        ->where('user_id', $user->id)  
         ->with(['user', 'breakTimes'])
         ->get();
 }
@@ -201,7 +197,7 @@ foreach ($daysInMonth as $day) {
         $userId = $request->input('user_id');
         Apply::create([
         'user_id' => $userId,  
-        'status'  => $request->input('status', 'apply'),  // デフォルト値 'apply'
+        'status'  => $request->input('status', 'apply'),  
     ]);
 
         return redirect('/admin/attendance/list');
@@ -210,12 +206,13 @@ foreach ($daysInMonth as $day) {
 
     public function agree($id){
         $apply = Apply::find($id);
+        dd($apply);
 
-    // データが見つからなければエラー
+    
     
     $agree = new Agree();
     $agree->user_id = $apply->user_id;
-    $agree->status = 'agree'; // 承認されたことを示す
+    $agree->status = 'agree'; 
     $agree->date = $apply->date;
     $agree->punchIn = $apply->punchIn;
     $agree->punchOut = $apply->punchOut;
@@ -226,8 +223,24 @@ foreach ($daysInMonth as $day) {
     $agree->updated_at = now();
     $agree->save();
 
-    // `apply` テーブルから削除
-    $apply->delete();
+
+    $today = Carbon::today()->toDateString();
+    $attendance = Attendance::where('user_id', $apply->user_id)
+                            ->whereDate('punchIn', $today)
+                            ->first();
+    
+        $attendance->punchIn = $apply->punchIn;
+        $attendance->punchOut = $apply->punchOut;
+        $attendance->updated_at = now();
+        $attendance->save();
+    
+
+    
+    $breakTime = new BreakTime();
+    $breakTime->attendance_id = $attendance->id;
+    $breakTime->breakStart = $apply->reststart; 
+    $breakTime->breakEnd = $apply->restend; 
+    $breakTime->save();
 
     return redirect('/admin/attendance/list');
     }

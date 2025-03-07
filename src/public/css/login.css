@@ -80,35 +80,23 @@ label {
     color: #FF9494;
 }
 
-@media (max-width: 1024px) {
+@media (max-width: 768px) and (max-width: 1024px) {
     .login-form {
-        width: 80%;
-        max-width: 500px;
-        padding: 25px;
+        width: 90%;
+        padding: 15px;
     }
 
     .login-form__heading {
-        font-size: 1.3rem;
-
-    }
-
-    .login-form__label {
-        font-size: 0.95rem;
-
+        font-size: 20px;
     }
 
     .login-form__input {
+        font-size: 16px;
         padding: 12px;
-
     }
 
     .login-form__btn {
+        font-size: 16px;
         padding: 14px;
-
-    }
-
-    .register__link {
-        font-size: 0.95rem;
-
     }
 }
